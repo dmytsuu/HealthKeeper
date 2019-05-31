@@ -8,11 +8,11 @@ default: &default
 
 development:
   <<: *default
-  database: template_app_development
+  database: health_keeper_app_development
 
 test:
   <<: *default
-  database: template_app_test
+  database: health_keeper_app_test
 
 production:
   url: <%= ENV['DATABASE_URL'] %>
