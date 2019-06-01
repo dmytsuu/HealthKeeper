@@ -15,21 +15,16 @@ ActiveRecord::Schema.define(version: 2019_05_31_161532) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "doctors", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
-    t.string "name"
-    t.string "surname"
-    t.string "middlename"
-    t.string "specification"
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "patient_id"
+    t.bigint "physician_id"
+    t.integer "status"
+    t.date "appointment_date"
+    t.text "diagnose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
+    t.index ["physician_id"], name: "index_appointments_on_physician_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -55,18 +50,23 @@ ActiveRecord::Schema.define(version: 2019_05_31_161532) do
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
   end
 
-  create_table "records", force: :cascade do |t|
-    t.bigint "patient_id"
-    t.bigint "doctor_id"
-    t.integer "status"
-    t.date "attending_day"
-    t.text "diagnose"
+  create_table "physicians", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "name"
+    t.string "surname"
+    t.string "middlename"
+    t.string "specification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["doctor_id"], name: "index_records_on_doctor_id"
-    t.index ["patient_id"], name: "index_records_on_patient_id"
   end
 
-  add_foreign_key "records", "doctors"
-  add_foreign_key "records", "patients"
+  add_foreign_key "appointments", "patients"
+  add_foreign_key "appointments", "physicians"
 end

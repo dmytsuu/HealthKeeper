@@ -2,10 +2,10 @@ doctype html
 html
   head
     title
-      | health_keeperApp
+      | Health Keeper
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    .container-fluid = yield

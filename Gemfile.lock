@@ -1,9 +1,3 @@
-GIT
-  remote: git://github.com/activebridge/bughub-ruby.git
-  revision: 789fe63af658748ade50fe9ba78c215b11858d0c
-  specs:
-    bughub (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -270,7 +264,6 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   bootstrap
-  bughub!
   bullet
   coffee-rails (~> 4.2)
   database_cleaner

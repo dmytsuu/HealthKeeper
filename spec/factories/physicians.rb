@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :doctor do
+  factory :physician do
     
   end
 end

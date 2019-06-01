@@ -1,9 +1,9 @@
-class Doctor < ApplicationRecord
+class Physician < ApplicationRecord
   devise :database_authenticatable,
          :rememberable,
          :validatable,
          :trackable
 
-  has_many :records
-  has_many :patients, through: :records
+  has_many :appointments
+  has_many :patients, through: :appointments
 end

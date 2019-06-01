@@ -1,0 +1,2 @@
+module Physicians::DashboardHelper
+end
