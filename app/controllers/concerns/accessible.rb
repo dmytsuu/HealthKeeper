@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Accessible
   extend ActiveSupport::Concern
   included do
@@ -5,6 +7,7 @@ module Accessible
   end
 
   protected
+
   def check_patient
     if current_physician
       flash.clear
