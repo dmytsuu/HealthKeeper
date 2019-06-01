@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class DeviseCreateDoctors < ActiveRecord::Migration[5.2]
+class DeviseCreatePhysicians < ActiveRecord::Migration[5.2]
   def change
-    create_table :doctors do |t|
+    create_table :physicians do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -40,9 +40,9 @@ class DeviseCreateDoctors < ActiveRecord::Migration[5.2]
       t.timestamps null: false
     end
 
-    # add_index :doctors, :email,                unique: true
-    # add_index :doctors, :reset_password_token, unique: true
-    # add_index :doctors, :confirmation_token,   unique: true
-    # add_index :doctors, :unlock_token,         unique: true
+    # add_index :physicians, :email,                unique: true
+    # add_index :physicians, :reset_password_token, unique: true
+    # add_index :physicians, :confirmation_token,   unique: true
+    # add_index :physicians, :unlock_token,         unique: true
   end
 end
