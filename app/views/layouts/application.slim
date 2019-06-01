@@ -8,4 +8,8 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .container-fluid = yield
+    - if current_patient || current_physician
+      .border-bottom = render partial: 'layouts/shared/navbar'
+    = render partial: 'layouts/shared/messages'
+    .container-fluid
+      = yield

@@ -2,21 +2,13 @@
 
 module Accessible
   extend ActiveSupport::Concern
-  included do
-    before_action :check_patient
-  end
 
   protected
 
-  def check_patient
-    if current_physician
+  def redirect_signed_in_user
+    if physician_signed_in? || patient_signed_in?
       flash.clear
-      # if you have rails_physician. You can redirect anywhere really
-      redirect_to(root_url) && return
-    elsif current_patient
-      flash.clear
-      # The authenticated root path can be defined in your routes.rb in: devise_scope :patient do...
-      redirect_to(root_url) && return
+      redirect_to(dashboard_url)
     end
   end
 end

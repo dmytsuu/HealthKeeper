@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
+  root 'pages#home'
+  get 'pages/home'
+  get 'dashboard', to: 'dashboard#index'
+
   devise_for :physicians, controllers: {
     sessions: 'physicians/sessions'
   }

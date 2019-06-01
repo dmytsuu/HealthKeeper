@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '2.6.3'
 
+gem 'activeadmin'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'coffee-rails', '~> 4.2'
