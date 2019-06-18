@@ -8,6 +8,7 @@ AllCops:
     - 'vendor/**/*'
     - 'log/**/*'
     - 'spec/support/**/*'
+    - 'app/helpers/devise_helper.rb'
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - 'spec/**/*'

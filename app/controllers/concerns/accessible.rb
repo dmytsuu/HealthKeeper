@@ -6,16 +6,23 @@ module Accessible
   protected
 
   def require_login
-    unless current_physician || current_patient
-      flash.clear
-      redirect_to(root_url)
-    end
+    return if current_physician || current_patient
+
+    flash.clear
+    redirect_to(root_url)
   end
 
   def redirect_signed_in_user
-    if physician_signed_in? || patient_signed_in?
-      flash.clear
-      redirect_to(dashboard_url)
+    return unless physician_signed_in? || patient_signed_in?
+
+    flash.clear
+    redirect_to(dashboard_url)
+  end
+
+  def authenticate_admin
+    authenticate_or_request_with_http_basic do |username, password|
+      username == 'admin' && password == 'password'
     end
+    warden.custom_failure! if performed?
   end
 end
