@@ -1,0 +1,5 @@
+.container.mt-4
+  = simple_form_for appointment do |f|
+    = f.input :physician_id, as: :select, collection: appointment_emails, class: 'form-control', prompt: 'Physician', label: false
+    = f.input :attendance_date, as: :datetime, class: 'datetimepicker'
+    = f.button :submit, "Create appointment", class: 'btn btn-primary btn-block'

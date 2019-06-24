@@ -9,7 +9,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     - if current_patient || current_physician
-      .border-bottom.shadow-sm.sticky-top = render partial: 'layouts/shared/navbar'
+      .border-bottom.sticky-top = render partial: 'layouts/shared/navbar'
     = render partial: 'layouts/shared/messages'
     .container-fluid
       = yield

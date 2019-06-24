@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 2019_06_01_110618) do
   create_table "appointments", force: :cascade do |t|
     t.bigint "patient_id"
     t.bigint "physician_id"
-    t.integer "status"
-    t.date "appointment_date"
+    t.integer "status", default: 0
+    t.datetime "attendance_date"
     t.text "diagnose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

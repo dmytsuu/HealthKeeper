@@ -2,7 +2,9 @@
 
 class Appointment < ApplicationRecord
   belongs_to :patient
-  belongs_to :physician, optional: true
+  belongs_to :physician
 
-  enum status: %i[requested canceled rejected completed]
+  validates :attendance_date, presence: true
+
+  enum status: %i[requested canceled rejected accepted attended]
 end

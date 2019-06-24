@@ -1,0 +1,5 @@
+tr
+  td = appointment.physician.email
+  td = appointment.attendance_date.strftime('%m/%d/%Y at %I:%M%p')
+  td = appointment.status
+  td = link_to 'Edit appointment', edit_appointment_url(appointment), class: 'btn btn-primary btn-block'
