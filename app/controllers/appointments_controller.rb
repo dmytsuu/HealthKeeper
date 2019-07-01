@@ -3,7 +3,7 @@
 class AppointmentsController < ApplicationController
   expose :appointment
   expose :appointments, -> { current_user.appointments }
-  expose :appointment_emails, -> { Physician.all.pluck(:email, :id) }
+  expose :appointment_emails, -> { Physician.pluck(:email, :id) }
   expose :appointment_statuses, -> { Appointment.statuses.keys }
   expose :physicians, -> { Physician.all }
 

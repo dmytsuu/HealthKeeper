@@ -3,7 +3,7 @@
 class Appointment < ApplicationRecord
   belongs_to :patient
   belongs_to :physician
-
+  # bugbug
   validates :attendance_date, presence: true
 
   enum status: %i[requested canceled rejected accepted attended]
