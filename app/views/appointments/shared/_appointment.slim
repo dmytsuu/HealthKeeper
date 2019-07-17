@@ -1,9 +1,12 @@
 tr
   td
-    = appointment.physician.email
-    = button_to 'Open chat', new_chat_room_path, class: 'btn btn-primary btn-block'
+    - if current_physician
+      = appointment.patient.email
+    - if current_patient
+      = appointment.physician.email
   td = appointment.attendance_date.strftime('%m/%d/%Y at %I:%M%p')
   td
-    .appointment-status = appointment.status
-    = button_to 'Accept', appointment_path(appointment, appointment: { status: 'accepted' }), method: :put, remote: true, class: 'btn btn-success btn-block'
-    = button_to 'Reject', appointment_path(appointment, appointment: { status: 'rejected' }), method: :put, remote: true, class: 'btn btn-danger btn-block'
+    div id="appointment-status-#{appointment.id}" = appointment.status
+    - if current_physician
+      = button_to 'Accept', appointment_path(appointment, appointment: { status: 'accepted' }), method: :put, remote: true, class: 'btn btn-success btn-block'
+      = button_to 'Reject', appointment_path(appointment, appointment: { status: 'rejected' }), method: :put, remote: true, class: 'btn btn-danger btn-block'

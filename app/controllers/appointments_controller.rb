@@ -26,7 +26,6 @@ class AppointmentsController < ApplicationController
     authorize(appointment, :update?)
     if appointment.update(appointment_params)
       flash[:success] = 'Appoinment updated'
-      redirect_to action: :index
     else
       render :edit
     end

@@ -369,6 +369,7 @@ DEPENDENCIES
   puma (~> 3.11)
   pundit
   rails (~> 5.2.3)
+  responders
   rspec-rails
   rubocop
   rubocop-rails
