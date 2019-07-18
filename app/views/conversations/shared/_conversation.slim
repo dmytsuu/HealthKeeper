@@ -1,0 +1,4 @@
+- if current_patient
+  = link_to conversation.physician.email, conversation_path(conversation)
+- if current_physician
+  = link_to conversation.patient.email, conversation_path(conversation)
