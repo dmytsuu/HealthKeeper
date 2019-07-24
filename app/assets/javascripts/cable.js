@@ -9,6 +9,5 @@
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer();
-  console.log('APP.CABLE', App.cable)
 
 }).call(this);
