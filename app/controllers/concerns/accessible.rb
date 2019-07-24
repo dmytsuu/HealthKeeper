@@ -9,14 +9,14 @@ module Accessible
     return if current_physician || current_patient
 
     flash.clear
-    redirect_to(root_url)
+    redirect_to(root_path)
   end
 
   def redirect_signed_in_user
     return unless physician_signed_in? || patient_signed_in?
 
     flash.clear
-    redirect_to(dashboard_url)
+    redirect_to(dashboard_path)
   end
 
   def authenticate_admin

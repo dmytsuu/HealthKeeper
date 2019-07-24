@@ -1,7 +1,7 @@
 .row.align-items-center.flex-column.m-0.mt-lg-5
   .col-lg-4.p-5.border.rounded.text-center
     h2 Log in as patient
-    = simple_form_for(@patient, url: patient_session_url, class: 'inline-form') do |f|
+    = simple_form_for(@patient, url: patient_session_path, class: 'inline-form') do |f|
       .form-group
         .text-left = f.label :email
         = f.input :email, autofocus: true, autocomplete: "email", class: 'form-control', label: false
