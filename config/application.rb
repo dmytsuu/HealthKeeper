@@ -36,3 +36,5 @@ module HealthKeeper
     config.generators.system_tests = nil
   end
 end
+
+Rails.application.credentials.config.each { |key, value| ENV[key.to_s.upcase] ||= value }

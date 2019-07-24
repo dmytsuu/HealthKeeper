@@ -2,9 +2,13 @@
 
 class MessagesController < ApplicationController
   expose :message
+  expose :conversation, -> { Conversation.find(params[:conversation_id]) }
 
   def create
-    message.save
+    return unless message.save
+
+    ConversationChannel.broadcast_to conversation, render_to_string(partial: 'conversations/shared/message',
+                                                                    locals: { message: message })
   end
 
   private

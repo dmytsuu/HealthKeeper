@@ -1,3 +1,4 @@
-.container.mt-4
-  = render partial: 'conversations/shared/message', collection: messages
-  = render partial: 'conversations/shared/new_message'
+div.container.mt-4 data-channel-subscribe="conversation" data-conversation-id="#{conversation.id}"
+  #message-list
+    = render partial: 'conversations/shared/message', collection: messages
+  .mt-3 = render partial: 'conversations/shared/new_message'

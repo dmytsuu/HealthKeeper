@@ -11,11 +11,12 @@ module ApplicationCable
     private
 
     def find_verified_user
-      if verified_user = User.find_by(id: cookies.signed['user.id'])
-        verified_user
-      else
-        reject_unauthorized_connection
-      end
+      patient = Patient.find_by(id: cookies.signed['patient.id'])
+      physician = Physician.find_by(id: cookies.signed['physician.id'])
+
+      return patient || physician if patient || physician
+
+      reject_unauthorized_connection
     end
   end
 end

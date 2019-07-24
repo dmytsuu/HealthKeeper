@@ -90,6 +90,8 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+  config.web_socket_server_url = 'wss://health-keeper.herokuapp.com/'
+  config.action_cable.allowed_request_origins = ['https://health-keeper.herokuapp.com/', 'http://health-keeper.herokuapp.com/']
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false

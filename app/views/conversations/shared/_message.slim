@@ -1,3 +1,8 @@
-small = message.user.email
-small = message.created_at
-p = message.content
+.container.message.mt-3
+  .row
+    .col-auto.px-1
+      small data-role="sender-email" = message.user.email
+      span = ' '
+      small data-role="sent_at" = message.created_at
+  .row
+    .col.border.rounded.bg-white.p-2 data-role="message-content" = message.content
