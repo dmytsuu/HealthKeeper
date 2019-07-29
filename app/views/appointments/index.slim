@@ -1,14 +1,12 @@
 h1 Appointments#index
-- unless appointments.empty?
-  table.table
-    thead
-      tr
-        th[scope='col'] Email
-        th[scope='col'] Attendance Date
-        th[scope='col'] Status
-    tbody
-      = render partial: 'appointments/shared/appointment', collection: appointments
+- if appointments
+  .container-fluid
+    .row.justify-content-center.font-weight-bold
+      .col-md-3 Email
+      .col-md-3 Attendance Date
+      .col-md-3 Status
+    = render partial: 'appointments/shared/appointment', collection: appointments
 - else
   p Your appointments history is clear
 -if current_patient
-  = link_to 'New appointment', new_appointment_path, class: 'btn btn-primary btn-block'
+= link_to 'New appointment', new_appointment_path, class: 'btn btn-primary btn-xl'
