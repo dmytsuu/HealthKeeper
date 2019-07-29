@@ -1,12 +1,16 @@
-tr
-  td
+.row.justify-content-center
+  .col-md-3
     - if current_physician
       = appointment.patient.email
     - if current_patient
       = appointment.physician.email
-  td = appointment.attendance_date.strftime('%m/%d/%Y at %I:%M%p')
-  td
-    div id="appointment-status-#{appointment.id}" = appointment.status
+    span = ' '
+    - if appointment.conversation
+      = link_to 'open conversation', conversation_path(appointment.conversation), class: 'btn btn-success btn-sm'
+  .col-md-3 = appointment.attendance_date.strftime('%m/%d/%Y at %I:%M%p')
+  .col-md-3
+    div id="appointment-status-#{appointment.id}" class="badge" class=(appointment.accepted? ? 'badge-success' : 'badge-warning' )
+      = appointment.status
     - if current_physician
       = button_to 'Accept', appointment_path(appointment, appointment: { status: 'accepted' }), method: :put, remote: true, class: 'btn btn-success btn-block'
       = button_to 'Reject', appointment_path(appointment, appointment: { status: 'rejected' }), method: :put, remote: true, class: 'btn btn-danger btn-block'

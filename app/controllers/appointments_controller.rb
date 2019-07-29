@@ -6,6 +6,7 @@ class AppointmentsController < ApplicationController
   expose :appointment_emails, -> { Physician.pluck(:email, :id) }
   expose :appointment_statuses, -> { Appointment.statuses.keys }
   expose :physicians, -> { Physician.all }
+  expose :conversation, -> { Conversation.find_by(patient: appointment.patient, physician: appointment.physician) }
 
   def new; end
 
