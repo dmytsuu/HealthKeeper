@@ -1,5 +1,5 @@
 .row.justify-content-center
-  .col-md-3
+  .col-md-4
     - if current_physician
       = appointment.patient.email
     - if current_patient
@@ -7,8 +7,8 @@
     span = ' '
     - if appointment.conversation
       = link_to 'open conversation', conversation_path(appointment.conversation), class: 'btn btn-success btn-sm'
-  .col-md-3 = appointment.attendance_date.strftime('%m/%d/%Y at %I:%M%p')
-  .col-md-3
+  .col-md-4 = appointment.attendance_date.strftime('%m/%d/%Y at %I:%M%p')
+  .col-md-4
     div id="appointment-status-#{appointment.id}" class="badge" class=(appointment.accepted? ? 'badge-success' : 'badge-warning' )
       = appointment.status
     - if current_physician

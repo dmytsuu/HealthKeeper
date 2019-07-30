@@ -3,7 +3,5 @@
 @import "overrides";
 @import "custom";
 @import "form";
-
-body {
-  max-width: 100%;
-}
+@import "sessions/*";
+@import "pages";

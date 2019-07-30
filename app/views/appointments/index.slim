@@ -1,10 +1,11 @@
-h1 Appointments#index
+h2 Manage your appointments
+.border-bottom.my-2
 - if appointments
   .container-fluid
     .row.justify-content-center.font-weight-bold
-      .col-md-3 Email
-      .col-md-3 Attendance Date
-      .col-md-3 Status
+      .col-md-4 Email
+      .col-md-4 Attendance Date
+      .col-md-4 Status
     = render partial: 'appointments/shared/appointment', collection: appointments
 - else
   p Your appointments history is clear
