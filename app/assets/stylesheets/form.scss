@@ -1,24 +1,10 @@
 @import './colors';
 @import './variables';
 
-// .logo {
-//   text-align: center;
-//   margin: 0 auto;
-//   padding: 32px 0 24px;
-// }
+$input_types: 'text', 'password', 'email';
 
-// .header {
-//   @include headings() {
-//     text-align: center;
-//     margin: 0 auto 1rem;
-//   }
-// }
-
-.form-group {
-  padding: 0;
-  margin-bottom: 1px;
-}
-
-input.form-control {
-  height: 46px;
+@each $type in $input_types {
+  input[type=#{$type}].form-control {
+    height: 46px;
+  }
 }
