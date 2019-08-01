@@ -6,9 +6,9 @@ li.list-group-item.list-group-item-action
           = image_tag 'https://unsplash.it/35/35', size: '35', alt: 'user-thumbnail', class: 'rounded-circle'
         .col.text-muted.d-flex.flex-column.align-items-start
           h6.mb-1 = conversation.physician.email
-          p.mb-1 = conversation.messages.last.content
+          p.mb-1 = conversation.messages&.last&.content || 'Message history is empty'
         .col-auto
-          small = conversation.messages.last.created_at.strftime("%I:%M%p")
+          small = conversation.messages&.last&.created_at&.strftime("%I:%M%p")
           br
           span.badge.badge-pill.badge-primary = conversation.messages.count
   - if current_physician
