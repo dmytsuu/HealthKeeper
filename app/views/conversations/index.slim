@@ -1,6 +1,7 @@
-.container
+.container-fluid.px-0
   - if conversations.any?
-    = render partial: 'conversations/shared/conversation', collection: conversations
+    ul.list-group.list-group-flush
+      = render partial: 'conversations/shared/conversation', collection: conversations
   - else
     .text-center.mt-5
       h1.h3.font-weight-light Your conversation history is empty yet...

@@ -1,13 +1,15 @@
-h2 Manage your appointments
-.border-bottom.my-2
-- if appointments
-  .container-fluid
-    .row.justify-content-center.font-weight-bold
-      .col-md-4 Email
-      .col-md-4 Attendance Date
-      .col-md-4 Status
-    = render partial: 'appointments/shared/appointment', collection: appointments
-- else
-  p Your appointments history is clear
+.container-fluid
+  - if appointments.any?
+    .container-fluid
+      .row.justify-content-center.font-weight-bold
+        .col-md-4 Email
+        .col-md-4 Attendance Date
+        .col-md-4 Status
+      = render partial: 'appointments/shared/appointment', collection: appointments
+  - else
+    .text-center.mt-5
+      h1.h3.font-weight-light Your conversation history is empty yet...
+      h1.h3.font-weight-light To start request an appointment
 -if current_patient
-= link_to 'New appointment', new_appointment_path, class: 'btn btn-primary btn-xl'
+  .text-center.mt-5
+    = link_to 'Request an appointment', new_appointment_path, class: 'btn btn-primary btn-xl'

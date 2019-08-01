@@ -12,5 +12,5 @@ html
   body
     div class=(current_user ? "border-bottom sticky-top" : "") = render partial: 'layouts/shared/navbar'
     = render partial: 'layouts/shared/messages'
-    .container-fluid
+    .container-fluid.px-0
       = yield
