@@ -1,14 +1,11 @@
-.row.align-items-center.flex-column.m-0.mt-lg-5
-  .col-lg-4.p-5.border.rounded.text-center
-    h2 Log in as patient
+.row.justify-content-center.align-items-center.public-page
+  .col-sign-in.text-center
+    h1.h3.font-weight-normal.mb-4 Sign in
     = simple_form_for(@patient, url: patient_session_path, class: 'inline-form') do |f|
-      .form-group
-        .text-left = f.label :email
-        = f.input :email, autofocus: true, autocomplete: "email", class: 'form-control', label: false
-      .form-group
-        .text-left = f.label :password
-        = f.input :password, autocomplete: "current-password", class: 'form-control', label: false
+      = f.input :email, autofocus: true, autocomplete: "email", class: 'form-control', label: false, placeholder: 'Email address'
+      = f.input :password, autocomplete: "current-password", class: 'form-control', label: false, placeholder: 'Password'
       - if devise_mapping.rememberable?
+        .form-group
           = f.check_box :remember_me, class: 'mr-1'
           = f.label :remember_me
-      = f.submit 'Log in', class: 'btn btn-primary btn-block'
+      = f.submit 'Sign in', class: 'btn btn-primary btn-block btn-xl'

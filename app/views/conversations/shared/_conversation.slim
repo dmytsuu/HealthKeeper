@@ -1,4 +1,22 @@
-- if current_patient
-  = link_to conversation.physician.email, conversation_path(conversation)
-- if current_physician
-  = link_to conversation.patient.email, conversation_path(conversation)
+li.list-group-item.list-group-item-action
+  - if current_patient
+    = link_to conversation_path(conversation) do
+      .row
+        .col-1
+          = image_tag 'https://unsplash.it/35/35', size: '35', alt: 'user-thumbnail', class: 'rounded-circle'
+        .col.text-muted.d-flex.flex-column.align-items-start
+          h6.mb-1 = conversation.physician.email
+          p.mb-1 = conversation.messages&.last&.content || 'Message history is empty'
+        .col-auto
+          small = conversation.messages&.last&.created_at&.strftime("%I:%M%p")
+          br
+          span.badge.badge-pill.badge-primary = conversation.messages.count
+  - if current_physician
+    = link_to conversation_path(conversation) do
+      .row
+        .col-1
+          = image_tag 'https://unsplash.it/35/35', size: '35', alt: 'user-thumbnail', class: 'rounded-circle'
+        .col.text-muted
+          = conversation.patient.email
+        .col-1
+          span.badge.badge-pill.badge-primary 10

@@ -8,6 +8,6 @@ class Appointment < ApplicationRecord
   enum status: %i[requested canceled rejected accepted attended]
 
   def conversation
-    Conversation.first_or_create(patient: patient, physician: physician)
+    Conversation.find_or_create_by(patient: patient, physician: physician)
   end
 end

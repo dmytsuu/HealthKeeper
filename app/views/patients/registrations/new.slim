@@ -1,0 +1,8 @@
+.row.justify-content-center.align-items-center.public-page
+  .col-sign-in.text-center
+    h1.h3.font-weight-normal.mb-4 Sign up
+    = simple_form_for(@patient, url: patient_registration_path, class: 'inline-form') do |f|
+      = f.input :email, autofocus: true, autocomplete: "email", required: true, class: 'form-control', label: false, placeholder: 'Email address'
+      = f.input :password, autocomplete: "new-password", required: true, class: 'form-control', label: false, placeholder: 'Password'
+      = f.input :password_confirmation, autocomplete: "new-password", required: true, class: 'form-control', label: false, placeholder: 'Password confirmation'
+      = f.submit 'Sign up', class: 'btn btn-primary btn-block btn-xl mt-4'

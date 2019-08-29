@@ -1,5 +1,7 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  = link_to 'Health Keeper', root_path, class: 'navbar-brand'
+nav.navbar.navbar-expand-lg.navbar-light.bg-white
+  = link_to root_path, class: 'navbar-brand d-flex align-items-center' do
+    = image_tag('first-aid-kit.svg', size: '35', alt: 'navbar-brand-logo', class: 'navbar-brand')
+    | Health Keeper
   button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
@@ -11,6 +13,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           = link_to 'Appoinments', appointments_path, class: 'nav-link'
         li.nav-item
           = link_to 'Conversations', conversations_path, class: 'nav-link'
+        li.navbar-text.px-2 Contact Us
     ul.navbar-nav
       li.navbar-text.mx-lg-1
         - if current_patient
@@ -22,3 +25,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           = link_to fa_icon("sign-out"), destroy_patient_session_path, method: 'delete', class: 'nav-link'
         - if current_physician
           = link_to fa_icon("sign-out"), destroy_physician_session_path, method: 'delete', class: 'nav-link'
+      - if !current_user
+        li.nav-item
+          = link_to 'Sign in', new_patient_session_path, class: 'nav-link'
+        li.nav-item
+          = link_to 'Sign up', new_patient_registration_path, class: 'nav-link'

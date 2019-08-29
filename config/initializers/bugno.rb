@@ -19,7 +19,7 @@ Bugno.configure do |config|
   ]
 
   # Specify or add usage environments:
-  config.usage_environments = %w[production]
+  config.usage_environments = %w[production development]
 
   # Specify current user method:
   config.current_user_method = 'current_user'
