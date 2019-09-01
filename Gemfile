@@ -8,6 +8,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'activeadmin'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
+gem 'bootstrap-datepicker-rails'
 gem 'bugno', git: 'git://github.com/activebridge/bugno-ruby.git'
 gem 'coffee-rails', '~> 4.2'
 gem 'decent_exposure', '3.0.0'
@@ -27,6 +28,7 @@ gem 'simple_form'
 gem 'slim'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'webpacker'
 
 group :development, :test do
   gem 'bullet'

@@ -1,15 +1,14 @@
-.container-fluid
-  - if appointments.any?
-    .container-fluid
-      .row.justify-content-center.font-weight-bold
-        .col-md-4 Email
-        .col-md-4 Attendance Date
-        .col-md-4 Status
-      = render partial: 'appointments/shared/appointment', collection: appointments
-  - else
-    .text-center.mt-5
-      h1.h3.font-weight-light Your conversation history is empty yet...
-      h1.h3.font-weight-light To start request an appointment
--if current_patient
+- if appointments.any?
+  .container-fluid
+    .row.justify-content-center.font-weight-bold
+      .col-md-4 Email
+      .col-md-4 Attendance Date
+      .col-md-4 Status
+    = render partial: 'appointments/shared/appointment', collection: appointments
+- else
   .text-center.mt-5
-    = link_to 'Request an appointment', new_appointment_path, class: 'btn btn-primary btn-xl'
+    h1.h3.font-weight-light You don't have any appointments yet...
+    h1.h3.font-weight-light It's never start to new one
+-if current_patient
+.text-center.mt-5
+  = link_to 'Request an appointment', new_appointment_path, class: 'btn btn-primary btn-xl'
