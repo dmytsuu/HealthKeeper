@@ -1,0 +1,9 @@
+$fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~bootstrap/scss/bootstrap';
+@import "overrides";
+@import "custom";
+@import "form";
+@import "sessions/new";
+@import "pages";
+@import "datepicker";

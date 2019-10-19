@@ -1,4 +1,5 @@
 div.container.mt-4 data-channel-subscribe="conversation" data-conversation-id="#{conversation.id}"
+  h4.text-center.font-weight-light.pb-3 Beginning of the conversation history...
   #message-list
     = render partial: 'conversations/shared/message', collection: messages
   .mt-3 = render partial: 'conversations/shared/new_message'

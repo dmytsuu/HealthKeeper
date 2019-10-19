@@ -16,9 +16,10 @@ class AppointmentsController < ApplicationController
     authorize(appointment, :create?)
     appointment.patient = current_patient
     if appointment.save
-      flash[:success] = 'Appoinment created'
+      flash[:success] = 'created'
       redirect_to action: :index
     else
+      flash[:error] = appointment.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -26,15 +27,15 @@ class AppointmentsController < ApplicationController
   def update
     authorize(appointment, :update?)
     if appointment.update(appointment_params)
-      flash[:success] = 'Appoinment updated'
+      flash[:success] = 'updated'
     else
-      render :edit
+      render appointment
     end
   end
 
   private
 
   def appointment_params
-    params.require(:appointment).permit(:physician_id, :attendance_date, :status)
+    params.require(:appointment).permit(:physician_id, :date, :time, :status, :diagnose)
   end
 end
