@@ -1,5 +1,8 @@
 .container.mt-4
-  = simple_form_for appointment do |f|
-    = f.input :physician_id, as: :select, collection: appointment_emails, class: 'form-control', prompt: 'Physician', label: false
-    = f.input :attendance_date, as: :datetime, class: 'datetimepicker'
-    = f.button :submit, "Create appointment", class: 'btn btn-primary btn-block'
+  .row.justify-content-center
+    .col
+      = simple_form_for appointment do |f|
+        = f.input :physician_id, as: :select, collection: appointment_emails, input_html: { class: 'form-control' }, prompt: 'Select a physician', label: false
+        = f.input :date, as: :string, input_html: { class: 'form-control', 'data-provide' => 'datepicker' }
+        = f.input :time, as: :select, collection: Array.new(24).map.with_index { |a, i| a = "#{i + 1}:00" }, input_html: { class: 'form-control'}
+        = f.button :submit, 'Create appointment', class: 'btn btn-primary btn-block'

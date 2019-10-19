@@ -1,6 +1,6 @@
 .row.justify-content-center.align-items-center.public-page
   .col-sign-in.text-center
-    h1.h3.font-weight-normal.mb-4 Sign in
+    h1.h3.font-weight-normal.mb-4 Sign in, please
     = simple_form_for(@patient, url: patient_session_path, class: 'inline-form') do |f|
       = f.input :email, autofocus: true, autocomplete: "email", class: 'form-control', label: false, placeholder: 'Email address'
       = f.input :password, autocomplete: "current-password", class: 'form-control', label: false, placeholder: 'Password'

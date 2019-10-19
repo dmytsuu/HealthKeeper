@@ -1,4 +1,5 @@
 .container.mt-4
   = simple_form_for appointment do |f|
-    = f.input :status, as: :select, collection: appointment_statuses, class: 'form-control', label: false
-    = f.button :submit, "Edit appointment", class: 'btn btn-primary btn-block'
+    / = f.input :status, as: :select, collection: appointment_statuses, class: 'form-control', label: false
+    = f.input :diagnose, class: 'form-control'
+    = f.button :submit, "Update", class: 'btn btn-primary btn-block'
