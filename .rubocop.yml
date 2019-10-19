@@ -10,6 +10,7 @@ AllCops:
     - 'spec/support/**/*'
     - 'config/initializers/*'
     - 'app/helpers/devise_helper.rb'
+    - 'node_modules/**/*'
 Lint/AmbiguousBlockAssociation:
   Exclude:
     - 'spec/**/*'
