@@ -1,6 +1,6 @@
 Bugno.configure do |config|
   # Specify api key to send exception to Bugno
-  # config.api_key = 'JRiZ3t2w3dRWTAmF1UFPxnL5'
+  config.api_key = 'JRiZ3t2w3dRWTAmF1UFPxnL5'
 
   # Send in background with threading:
   config.send_in_background = true

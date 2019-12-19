@@ -1,9 +1,11 @@
 .row.justify-content-center
   .col-md-4
     - if current_physician
-      = appointment.patient.email
+      div = "#{appointment.patient.name} #{appointment.patient.surname}"
+      div = appointment.patient.email
     - if current_patient
-      = appointment.physician.email
+      div = "#{appointment.physician.name} #{appointment.physician.surname}"
+      div = appointment.physician.email
     span = ' '
     - if appointment.conversation
       = link_to 'open conversation', conversation_path(appointment.conversation), class: 'btn btn-success btn-sm'

@@ -1,6 +1,6 @@
 var _bugnoConfig = {
   accessToken: 'JRiZ3t2w3dRWTAmF1UFPxnL5',
-  endpoint: `https://api-staging.bugno.io/api/v1/projects/JRiZ3t2w3dRWTAmF1UFPxnL5/events`,
+  // endpoint: `https://api-staging.bugno.io/api/v1/projects/JRiZ3t2w3dRWTAmF1UFPxnL5/events`,
   captureUncaught: true,
   captureUnhandledRejections: true,
   bugnoJsUrl: 'https://cdn.jsdelivr.net/gh/activebridge/bugno-js/dist/bugno.min.js'
