@@ -3,6 +3,6 @@
     .col-auto
       = simple_form_for appointment do |f|
         = f.input :physician_id, as: :select, collection: appointment_emails, input_html: { class: 'form-control' }, prompt: 'Choose doctor', label: false
-        = f.input :date, as: :string, input_html: { class: 'form-control', 'data-provide' => 'datepicker' }
-        = f.input :time, as: :select, collection: Array.new(24).map.with_index { |a, i| a = "#{i + 1}:00" }, input_html: { class: 'form-control'}
+        = f.input :date, as: :string, input_html: { value: Date.today, class: 'form-control appointment-date' }
+        = f.input :time, as: :string, input_html: { value: Time.now, class: 'form-control appointment-time' }
         = f.button :submit, 'Create appointment', class: 'btn btn-primary btn-block'

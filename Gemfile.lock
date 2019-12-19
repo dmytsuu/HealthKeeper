@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/activebridge/bugno-ruby.git
-  revision: 059fd023e1b31661aecff912b609f56306b408a9
+  revision: 0c4e5b25b6b6c7c9121392451679f488eef022bc
   specs:
-    bugno (0.1.7)
+    bugno (0.1.8)
 
 GEM
   remote: https://rubygems.org/
