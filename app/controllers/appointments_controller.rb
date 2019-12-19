@@ -3,7 +3,7 @@
 class AppointmentsController < ApplicationController
   expose :appointment
   expose :appointments, -> { current_user.appointments }
-  expose :appointment_emails, -> { Physician.pluck(:email, :id) }
+  expose :appointment_physicians, -> { Physician.pluck(:name, :surname, :id).map { |p| ["#{p[0]} #{p[1]}", p[2]] } }
   expose :appointment_statuses, -> { Appointment.statuses.keys }
   expose :physicians, -> { Physician.all }
   expose :conversation, -> { Conversation.find_by(patient: appointment.patient, physician: appointment.physician) }
@@ -15,9 +15,11 @@ class AppointmentsController < ApplicationController
   def create
     authorize(appointment, :create?)
     appointment.patient = current_patient
+    diseases = Disease.by_symptoms(appointment_params[:symptoms].reject(&:empty?))
+    appointment.diseases << diseases if diseases.any?
     if appointment.save
       flash[:success] = 'created'
-      redirect_to action: :index
+      redirect_to appointment_path(appointment)
     else
       flash[:error] = appointment.errors.full_messages.to_sentence
       render :new
@@ -36,6 +38,6 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:physician_id, :date, :time, :status, :diagnose)
+    params.require(:appointment).permit(:physician_id, :date, :time, :status, :diagnose, symptoms: [])
   end
 end

@@ -10,4 +10,8 @@ class Physician < ApplicationRecord
   has_many :messages, as: :user, dependent: :destroy
   has_many :appointments, dependent: :destroy
   has_many :patients, through: :appointments
+
+  def full_name
+    "#{name} #{surname}"
+  end
 end

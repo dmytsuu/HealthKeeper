@@ -1,8 +1,7 @@
 doctype html
 html
   head
-    title
-      | Health Keeper
+    title HK
     = action_cable_meta_tag
     = csrf_meta_tags
     = csp_meta_tag
@@ -10,6 +9,4 @@ html
     = javascript_pack_tag 'application'
   body
     div class=(current_user ? "border-bottom sticky-top" : "") = render partial: 'layouts/shared/navbar'
-    = render partial: 'layouts/shared/messages'
-    .container-fluid
-      = yield
+    .container-fluid = yield

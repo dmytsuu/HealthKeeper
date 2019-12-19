@@ -1,0 +1,7 @@
+class AddColumnsToPatients < ActiveRecord::Migration[5.2]
+  def change
+    add_column :patients, :weight, :integer
+    add_column :patients, :height, :integer
+    add_column :patients, :blood_type, :string
+  end
+end

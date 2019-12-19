@@ -1,3 +1,8 @@
-h1 = "Appointment#{appointment.id}"
-h3 Diagnose
-p = appointment.diagnose
+.container.p-1
+  .row
+    .col
+      h3 = "Appointment # #{appointment.id}"
+      h4 = "Physician: #{appointment.physician.name} #{appointment.physician.surname}"
+      h4 = "Pacient: #{appointment.patient.name} #{appointment.patient.surname}"
+      h4 = "Status: #{appointment.status}"
+      p = "Suggested diseases: #{appointment.diseases.pluck(:name).map(&:humanize).to_sentence}" if appointment.diseases.any?
