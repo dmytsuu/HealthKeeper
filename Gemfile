@@ -6,11 +6,14 @@ ruby '2.6.3'
 
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'activeadmin'
+gem 'awesome_print'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bugno', git: 'git://github.com/activebridge/bugno-ruby.git'
 gem 'coffee-rails', '~> 4.2'
 gem 'decent_exposure', '3.0.0'
 gem 'devise'
+gem 'factory_bot_rails'
+gem 'faker'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -29,8 +32,6 @@ gem 'webpacker'
 
 group :development, :test do
   gem 'bullet'
-  gem 'factory_bot_rails'
-  gem 'faker'
   gem 'pry'
   gem 'rspec-rails'
   gem 'rubocop'

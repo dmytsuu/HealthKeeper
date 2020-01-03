@@ -16,7 +16,7 @@ module Accessible
     return unless physician_signed_in? || patient_signed_in?
 
     flash.clear
-    redirect_to(dashboard_path)
+    redirect_to(appointments_path)
   end
 
   def authenticate_admin
