@@ -1,17 +1,32 @@
 .container
-  = simple_form_for @patient, url: patient_registration_path do |f|
+  = simple_form_for @patient, url: patient_registration_path do |form|
     .h3.font-weight-normal.mb-4.text-center.w-100 Sign up
     .row
-      = f.input :name, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: 'John'
-      = f.input :surname, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: 'Doe'
-      = f.input :email, autocomplete: "email", required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: 'john@doe.me'
+      .col-4
+        .container-fluid
+          .row
+            .col.h5.text-center Account
+          = form.input :email, autocomplete: "email", required: true, input_html: { class: 'col form-control' }, wrapper_html: { class: 'row flex-column' }, label_html: { class: 'col px-0' }, placeholder: 'john@doe.me'
+          = form.input :password, autocomplete: "new-password", required: true, input_html: { class: 'col form-control' }, wrapper_html: { class: 'row flex-column' }, label_html: { class: 'col px-0' }, placeholder: '**********'
+          = form.input :password_confirmation, autocomplete: "new-password", required: true, input_html: { class: 'col form-control' }, wrapper_html: { class: 'row flex-column' }, label_html: { class: 'col px-0' }, placeholder: '**********'
+      .col-4
+        .container-fluid
+          .row
+            .col.h5.text-center Parent
+          = form.simple_fields_for :parent_attributes do |f|
+            = f.input :name, required: true, input_html: { class: 'col form-control' }, wrapper_html: { class: 'row flex-column' }, label_html: { class: 'col px-0' }, placeholder: 'John'
+            = f.input :surname, required: true, input_html: { class: 'col form-control' }, wrapper_html: { class: 'row flex-column' }, label_html: { class: 'col px-0' }, placeholder: 'Doe'
+      .col-4
+        .container-fluid
+          .row
+            .col.h5.text-center Child
+          = form.input :name, required: true, input_html: { class: 'col form-control' }, wrapper_html: { class: 'row flex-column' }, label_html: { class: 'col px-0' }, placeholder: 'John'
+          = form.input :surname, required: true, input_html: { class: 'col form-control' }, wrapper_html: { class: 'row flex-column' }, label_html: { class: 'col px-0' }, placeholder: 'Doe'
+          .row
+            = form.input :weight, as: :string, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col pl-0' }, placeholder: '62'
+            = form.input :height, as: :string, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col pr-0' }, placeholder: '158'
+          .row
+            = form.input :age, as: :integer, required: true, input_html: { class: 'form-control', style: 'height: 46px;' }, wrapper_html: { class: 'col pl-0' }, placeholder: '14'
+            = form.input :blood_type, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col pr-0' }, placeholder: 'A+'
     .row
-      = f.input :weight, as: :string, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: '62'
-      = f.input :height, as: :string, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: '158'
-      = f.input :age, as: :integer, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: '14'
-      = f.input :blood_type, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: 'A+'
-    .row
-      = f.input :password, autocomplete: "new-password", required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: '**********'
-      = f.input :password_confirmation, autocomplete: "new-password", required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: '**********'
-    .row
-      .col = f.submit 'Sign up', class: 'btn btn-primary btn-block btn-xl my-4'
+      .col = form.submit 'Sign up', class: 'btn btn-primary btn-block btn-xl my-4'
