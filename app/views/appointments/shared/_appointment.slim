@@ -16,7 +16,7 @@
     div id="appointment-status-#{appointment.id}" class="badge" class=(appointment.accepted? ? 'badge-success' : 'badge-warning' )
       = appointment.status
     - if current_physician
-      - if appointment.status == :requested
+      - if appointment.status == :pending
         = button_to 'Accept', appointment_path(appointment, appointment: { status: :accepted }), method: :put, remote: true, class: 'btn btn-success btn-block'
         = button_to 'Reject', appointment_path(appointment, appointment: { status: :rejected }), method: :put, remote: true, class: 'btn btn-danger btn-block'
       - if appointment.status == :accepted

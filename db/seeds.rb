@@ -1,7 +1,8 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+diseases = %w[migraine meningitis liver_cancer intestinal_blockage heart_attack ear_infection vertigo
+              bronchiectasis bronchiolitis cystic_fibrosis concussions scleroderma
+              rheumatoid_arthritis ulcerative_colitis myelofibrosis lupus_erythematosus anaemia pneumonia
+              haemophilia pulmonary_oedema fever pulmonary_fibrosis insanity necrosis]
+
+diseases.each { |disease| Disease.create(name: disease, symptoms: Disease::SYMPTOMS.sample(5)) }
+
+FactoryBot.create_list(:physician, 10)

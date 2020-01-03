@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_213706) do
+ActiveRecord::Schema.define(version: 2019_12_22_141250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,16 @@ ActiveRecord::Schema.define(version: 2019_08_31_213706) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.time "time"
+    t.string "symptoms", array: true
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
     t.index ["physician_id"], name: "index_appointments_on_physician_id"
+  end
+
+  create_table "appointments_diseases", id: false, force: :cascade do |t|
+    t.bigint "appointment_id", null: false
+    t.bigint "disease_id", null: false
+    t.index ["appointment_id"], name: "index_appointments_diseases_on_appointment_id"
+    t.index ["disease_id"], name: "index_appointments_diseases_on_disease_id"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -49,6 +57,16 @@ ActiveRecord::Schema.define(version: 2019_08_31_213706) do
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_conversations_on_patient_id"
     t.index ["physician_id"], name: "index_conversations_on_physician_id"
+  end
+
+  create_table "diseases", force: :cascade do |t|
+    t.string "name"
+    t.integer "temperature_above"
+    t.integer "temperature_below"
+    t.string "blood_types"
+    t.string "symptoms", array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -81,6 +99,10 @@ ActiveRecord::Schema.define(version: 2019_08_31_213706) do
     t.date "birth_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "weight"
+    t.integer "height"
+    t.string "blood_type"
+    t.integer "age"
     t.index ["email"], name: "index_patients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
   end

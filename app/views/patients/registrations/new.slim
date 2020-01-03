@@ -1,8 +1,17 @@
-.row.justify-content-center.align-items-center.public-page
-  .col-sign-in.text-center
-    h1.h3.font-weight-normal.mb-4 Sign up
-    = simple_form_for(@patient, url: patient_registration_path, class: 'inline-form') do |f|
-      = f.input :email, autofocus: true, autocomplete: "email", required: true, class: 'form-control', label: false, placeholder: 'Email address'
-      = f.input :password, autocomplete: "new-password", required: true, class: 'form-control', label: false, placeholder: 'Password'
-      = f.input :password_confirmation, autocomplete: "new-password", required: true, class: 'form-control', label: false, placeholder: 'Password confirmation'
-      = f.submit 'Sign up', class: 'btn btn-primary btn-block btn-xl mt-4'
+.container
+  = simple_form_for @patient, url: patient_registration_path do |f|
+    .h3.font-weight-normal.mb-4.text-center.w-100 Sign up
+    .row
+      = f.input :name, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: 'John'
+      = f.input :surname, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: 'Doe'
+      = f.input :email, autocomplete: "email", required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: 'john@doe.me'
+    .row
+      = f.input :weight, as: :string, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: '62'
+      = f.input :height, as: :string, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: '158'
+      = f.input :age, as: :integer, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: '14'
+      = f.input :blood_type, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: 'A+'
+    .row
+      = f.input :password, autocomplete: "new-password", required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: '**********'
+      = f.input :password_confirmation, autocomplete: "new-password", required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col' }, placeholder: '**********'
+    .row
+      .col = f.submit 'Sign up', class: 'btn btn-primary btn-block btn-xl my-4'

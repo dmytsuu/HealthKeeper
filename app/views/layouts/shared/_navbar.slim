@@ -6,30 +6,17 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-white
     span.navbar-toggler-icon
   #navbarSupportedContent.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      - if current_patient || current_physician
-        / li.nav-item
-        /   = link_to 'Dashboard', dashboard_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Appoinments', appointments_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Conversations', conversations_path, class: 'nav-link'
-        / li.navbar-text Contact Us
+      - if current_user
+        li.nav-item = link_to 'Appoinments', appointments_path, class: 'nav-link'
+        li.nav-item = link_to 'Conversations', conversations_path, class: 'nav-link'
     ul.navbar-nav
-      li.navbar-item.mx-lg-1
-        - if current_patient
-          = link_to 'New appointment', new_appointment_path, method: :get, class: 'text-success nav-link'
       li.navbar-text.mx-lg-1
-        - if current_patient
-          = current_patient.email
-        - if current_physician
-          = current_physician.email
+        = "#{current_user.name} #{current_user.surname}, #{current_user.email}" if current_user
+      li.navbar-item.mx-lg-1
+        = link_to 'New appointment', new_appointment_path, class: 'btn btn-success' if current_patient
       li.nav-item
-        - if current_patient
-          = link_to "sign-out", destroy_patient_session_path, method: :delete, class: 'nav-link'
-        - if current_physician
-          = link_to "sign-out", destroy_physician_session_path, method: :delete, class: 'nav-link'
-      - if !current_user
-        li.nav-item
-          = link_to 'Sign in', new_patient_session_path, class: 'nav-link'
-        li.nav-item
-          = link_to 'Sign up', new_patient_registration_path, class: 'nav-link'
+        = link_to "Sign out", destroy_patient_session_path, method: :delete, class: 'btn btn-danger' if current_patient
+        = link_to "Sign out", destroy_physician_session_path, method: :delete, class: 'btn btn-danger' if current_physician
+      - unless current_user
+        li.nav-item = link_to 'Sign in', new_patient_session_path, class: 'nav-link'
+        li.nav-item = link_to 'Sign up', new_patient_registration_path, class: 'nav-link'

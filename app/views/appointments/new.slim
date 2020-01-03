@@ -1,8 +1,24 @@
 .container.mt-4
-  .row
-    .col-auto
-      = simple_form_for appointment do |f|
-        = f.input :physician_id, as: :select, collection: appointment_emails, input_html: { class: 'form-control' }, prompt: 'Choose doctor', label: false
-        = f.input :date, as: :string, input_html: { value: Date.today, class: 'form-control appointment-date' }
-        = f.input :time, as: :string, input_html: { value: Time.now, class: 'form-control appointment-time' }
+  = simple_form_for appointment do |f|
+    .row.justify-content-between
+      .col-md
+        .h3 Symptoms
+        .container-fluid
+          .row
+            .col-md
+              label.w-100
+                | Temperature
+                = text_field_tag :temperature, '', class: 'form-control number-only-input', placeholder: '36.6'
+            .col-md
+              label.w-100
+                | Pressure
+                = text_field_tag :pressure, '', class: 'form-control number-only-input', placeholder: '120 / 80'
+          .row
+            .col
+              = f.input :symptoms, as: :select, collection: Disease::SYMPTOMS, input_html: { multiple: 'multiple' }
+      .col-md-4
+        .h3 Arrange
+        = f.input :physician_id, as: :select, collection: appointment_physicians, input_html: { class: 'form-control' }, prompt: 'Choose doctor', label: false
+        = f.input :date, as: :string, input_html: { value: appointment_date, class: 'form-control appointment-date' }
+        = f.input :time, as: :string, input_html: { value: appointment_time, class: 'form-control appointment-time' }
         = f.button :submit, 'Create appointment', class: 'btn btn-primary btn-block'
