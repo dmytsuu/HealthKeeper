@@ -16,5 +16,5 @@
           = appointment.complaints
       - if current_patient
         .h6.py-2
-          = image_tag 'https://i.imgur.com/hmJx9oQ.png?1', size: '150', alt: 'user-thumbnail', class: 'rounded'
+          = image_tag appointment.physician.photo, size: '150', alt: 'user-thumbnail', class: 'rounded' if appointment.physician.photo.present?
           .py-2.font-weight-bold = "#{appointment.physician.name} #{appointment.physician.surname}"

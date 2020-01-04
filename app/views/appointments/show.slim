@@ -27,11 +27,11 @@
           = appointment.diagnose
       - if current_patient
         .col-auto.text-center
-          = image_tag 'https://i.imgur.com/hmJx9oQ.png?1', size: '150', alt: 'user-thumbnail', class: 'col-auto rounded'
+          = image_tag appointment.physician.photo, size: '150', alt: 'user-thumbnail', class: 'col-auto rounded' if appointment.physician.photo.present?
           h4.font-weight-light.my-3 = "#{appointment.physician.name} #{appointment.physician.surname}"
           = link_to 'Open dialog', conversation_path(appointment.conversation), class: 'btn btn-success w-75 '
       - if current_physician
         .col-auto.text-center
-          = image_tag 'https://i.imgur.com/hmJx9oQ.png?1', size: '150', alt: 'user-thumbnail', class: 'col-auto rounded'
+          = image_tag appointment.patient.photo, size: '150', alt: 'user-thumbnail', class: 'col-auto rounded' if appointment.patient.photo.present?
           h4.font-weight-light.my-3 = "#{appointment.patient.name} #{appointment.patient.surname}"
           = link_to 'Open dialog', conversation_path(appointment.conversation), class: 'btn btn-success w-75 '

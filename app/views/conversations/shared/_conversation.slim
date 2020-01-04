@@ -3,8 +3,8 @@ li.list-group-item.list-group-item-action
     = link_to conversation_path(conversation) do
       .row
         .col-1
-          = image_tag 'https://unsplash.it/35/35', size: '35', alt: 'user-thumbnail', class: 'rounded-circle'
-        .col.text-muted.d-flex.flex-column.align-items-start
+          = image_tag conversation.physician.photo, size: '100', alt: 'user-thumbnail', class: 'rounded-circle' if conversation.physician.photo.present?
+        .col.text-muted.d-flex.flex-column.align-items-start.justify-content-center.ml-5
           h6.mb-1 = conversation.physician.email
           p.mb-1 = conversation.messages&.last&.content || 'Message history is empty'
         .col-auto
@@ -15,7 +15,7 @@ li.list-group-item.list-group-item-action
     = link_to conversation_path(conversation) do
       .row
         .col-1
-          = image_tag 'https://unsplash.it/35/35', size: '35', alt: 'user-thumbnail', class: 'rounded-circle'
+          = image_tag conversation.patient.photo, size: '100', alt: 'user-thumbnail', class: 'rounded-circle' if conversation.patient.photo
         .col.text-muted
           = conversation.patient.email
         .col-1

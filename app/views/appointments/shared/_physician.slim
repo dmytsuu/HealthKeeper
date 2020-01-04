@@ -2,7 +2,7 @@
 label.col-6.mb-5.cursor-pointer for="appointment_physician_id_#{physician.id}"
   .nav-item.h-100.text-center.bg-light.shadow-sm.hover-rounded.nav-link.container-fluid
     .row.h-100.p-3
-      = image_tag 'https://i.imgur.com/hmJx9oQ.png?1', size: '150', alt: 'user-thumbnail', class: 'col-auto rounded'
+      = image_tag physician.photo, size: '150', alt: 'user-thumbnail', class: 'col-auto rounded' if physician.photo.present?
       .col.d-flex.flex-column.text-left
          .heading.font-weight-bold = "#{physician.name} #{physician.surname}"
          .specification = physician.specification
