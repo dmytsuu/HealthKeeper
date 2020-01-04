@@ -1,8 +1,37 @@
-.container.p-1
-  .row
-    .col
-      h3 = "Appointment # #{appointment.id}"
-      h4 = "Physician: #{appointment.physician.name} #{appointment.physician.surname}"
-      h4 = "Pacient: #{appointment.patient.name} #{appointment.patient.surname}"
-      h4 = "Status: #{appointment.status}"
-      p = "Suggested diseases: #{appointment.diseases.pluck(:name).map(&:humanize).to_sentence}" if appointment.diseases.any?
+.jumbotron.jumbotron-fluid.p-3.mt-3.rounded
+  .container-fluid
+    .row.justify-content-between.align-items-center
+      .col-auto
+        .display-4 = "Appointment # #{appointment.id}"
+      .col-auto.alert.alert-success.m-0 = appointment.status.titleize
+    .row
+      .col-auto
+        .text-muted
+          | Created date:
+          = appointment.created_at.strftime(' %-d of %B %Y at %I:%M %p')
+          br
+          | Attandance date:
+          = appointment.date.strftime(' %-d of %B %Y at ')
+          = appointment.time.strftime('%I:%M %p')
+    .row.border-bottom.my-4
+    .row.justify-content-between
+      .col
+        - if appointment.complaints.present?
+          h4.font-weight-normal.my-2 Complaints
+          = appointment.complaints
+        - if appointment.diseases.any?
+          h4.font-weight-normal.my-2 Suggested diseases
+          = appointment.diseases.pluck(:name).map(&:humanize).to_sentence
+        - if appointment.diagnose.present?
+          h4.font-weight-normal.my-2 Diagnose
+          = appointment.diagnose
+      - if current_patient
+        .col-auto.text-center
+          = image_tag 'https://i.imgur.com/hmJx9oQ.png?1', size: '150', alt: 'user-thumbnail', class: 'col-auto rounded'
+          h4.font-weight-light.my-3 = "#{appointment.physician.name} #{appointment.physician.surname}"
+          = link_to 'Open dialog', conversation_path(appointment.conversation), class: 'btn btn-success w-75 '
+      - if current_physician
+        .col-auto.text-center
+          = image_tag 'https://i.imgur.com/hmJx9oQ.png?1', size: '150', alt: 'user-thumbnail', class: 'col-auto rounded'
+          h4.font-weight-light.my-3 = "#{appointment.patient.name} #{appointment.patient.surname}"
+          = link_to 'Open dialog', conversation_path(appointment.conversation), class: 'btn btn-success w-75 '

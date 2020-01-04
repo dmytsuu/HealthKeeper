@@ -1,24 +1,35 @@
-.container.mt-4
+.container-fluid.mt-4
   = simple_form_for appointment do |f|
     .row.justify-content-between
-      .col-md
-        .h3 Symptoms
-        .container-fluid
-          .row
-            .col-md
-              label.w-100
-                | Temperature
-                = text_field_tag :temperature, '', class: 'form-control number-only-input', placeholder: '36.6'
-            .col-md
-              label.w-100
-                | Pressure
-                = text_field_tag :pressure, '', class: 'form-control number-only-input', placeholder: '120 / 80'
-          .row
-            .col
-              = f.input :symptoms, as: :select, collection: Disease::SYMPTOMS, input_html: { multiple: 'multiple' }
-      .col-md-4
-        .h3 Arrange
-        = f.input :physician_id, as: :select, collection: appointment_physicians, input_html: { class: 'form-control' }, prompt: 'Choose doctor', label: false
-        = f.input :date, as: :string, input_html: { value: appointment_date, class: 'form-control appointment-date' }
-        = f.input :time, as: :string, input_html: { value: appointment_time, class: 'form-control appointment-time' }
-        = f.button :submit, 'Create appointment', class: 'btn btn-primary btn-block'
+      #physician-accordion.accordion.border-bottom.w-100
+        .card.rounded
+          #physician-heading.card-header
+            h4.font-weight-light.mb-0
+              a.w-100 aria-controls="physician-collapse" aria-expanded="true" data-target="#physician-collapse" data-toggle="collapse" type="button"
+                | Choose doctor
+          #physician-collapse.collapse.show aria-labelledby="physician-heading" data-parent="#physician-accordion"
+            .card-body.container-fluid.navbar-light
+              .row.navbar-nav.flex-row.p-2
+                = render partial: 'appointments/shared/physician', collection: appointment_physicians, as: :physician, locals: { f: f }
+
+      #second-accordion.accordion.border-bottom.w-100
+        .card.rounded
+          #second-heading.card-header
+            h4.font-weight-light.mb-0
+              a.w-100 aria-controls="second-collapse" aria-expanded="true" data-target="#second-collapse" data-toggle="collapse" type="button"
+                | Choose date and specify symptoms
+          #second-collapse.collapse.show aria-labelledby="second-heading" data-parent="#second-accordion"
+            .card-body.container-fluid
+              .row
+                label.col-md
+                  .d-inline-block.mb-2 Temperature
+                  = text_field_tag :temperature, '', class: 'form-control number-only-input', placeholder: '36.6'
+                label.col-md
+                  .d-inline-block.mb-2 Pressure
+                  = text_field_tag :pressure, '', class: 'form-control number-only-input', placeholder: '120 / 80'
+                = f.input :date, as: :string, input_html: { value: appointment_date, class: 'form-control appointment-date' }, wrapper_html: { class: 'col-md' }
+                = f.input :time, as: :string, input_html: { value: appointment_time, class: 'form-control appointment-time' }, wrapper_html: { class: 'col-md' }
+              .row
+                .col = f.input :symptoms, as: :select, collection: Disease::SYMPTOMS, input_html: { multiple: 'multiple' }
+                .col = f.input :complaints, input_html: { class: 'form-control' }, placeholder: 'Feeling bad.', label: 'Additional complaints'
+      = f.button :submit, 'Create appointment', class: 'btn btn-primary btn-block my-3'

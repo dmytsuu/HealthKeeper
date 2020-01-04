@@ -1,23 +1,20 @@
-.row.justify-content-center
-  .col-md-4
-    - if current_physician
-      div = "#{appointment.patient.name} #{appointment.patient.surname}"
-      div = appointment.patient.email
-    - if current_patient
-      div = "#{appointment.physician.name} #{appointment.physician.surname}"
-      div = appointment.physician.email
-    span = ' '
-    - if appointment.conversation
-      = link_to 'open conversation', conversation_path(appointment.conversation), class: 'btn btn-success btn-sm'
-  .col-md-4
-    = appointment.date.strftime('%m/%d/%Y at ')
-    = appointment.time.strftime('%I:%M %p')
-  .col-md-4
-    div id="appointment-status-#{appointment.id}" class="badge" class=(appointment.accepted? ? 'badge-success' : 'badge-warning' )
-      = appointment.status
-    - if current_physician
-      - if appointment.status == :pending
-        = button_to 'Accept', appointment_path(appointment, appointment: { status: :accepted }), method: :put, remote: true, class: 'btn btn-success btn-block'
-        = button_to 'Reject', appointment_path(appointment, appointment: { status: :rejected }), method: :put, remote: true, class: 'btn btn-danger btn-block'
-      - if appointment.status == :accepted
-        = button_to 'Attended', appointment_path(appointment, appointment: { status: :attended }), method: :put, remote: true, class: 'btn btn-success btn-block'
+.col-3.mb-5.appointment-card
+  = link_to appointment_path(appointment), class: 'nav-item nav-link h-100 text-center bg-light shadow-sm hover-rounded' do
+    .d-flex.flex-column.justify-content-center.align-items-center.h-100.p-3
+      .h6.py-0
+        .font-weight-bold.d-inline-block.px-1 Status:
+        .alert.alert-success.d-inline-block.mx-1.my-0 = appointment.status.upcase
+      .h6.py-2.m-0
+        .font-weight-bold.d-inline-block.px-1 Date:
+        = appointment.date.strftime('%-d of %B %Y at ')
+        = appointment.time.strftime('%I:%M %p')
+      - if current_physician
+        .h6.py-2
+          span> With patient
+          .d-inline-block.font-weight-bold = "#{appointment.patient.name} #{appointment.patient.surname}"
+          .font-weight-bold Complaints
+          = appointment.complaints
+      - if current_patient
+        .h6.py-2
+          = image_tag 'https://i.imgur.com/hmJx9oQ.png?1', size: '150', alt: 'user-thumbnail', class: 'rounded'
+          .py-2.font-weight-bold = "#{appointment.physician.name} #{appointment.physician.surname}"

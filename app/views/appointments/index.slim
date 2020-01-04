@@ -1,10 +1,7 @@
 - if appointments.any?
-  .container
-    .row.justify-content-center.font-weight-bold
-      .col-md-4 Doc info
-      .col-md-4 Attendance Date
-      .col-md-4 Status
-    = render partial: 'appointments/shared/appointment', collection: appointments
+  .container-fluid.navbar-light
+    .row.navbar-nav.flex-row.p-5
+      = render partial: 'appointments/shared/appointment', collection: appointments
 - else
   .text-center.mt-5
     h1.h3.font-weight-light You don't have any appointments yet...
