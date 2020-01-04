@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_221317) do
+ActiveRecord::Schema.define(version: 2020_01_04_161340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_01_03_221317) do
     t.datetime "updated_at", null: false
     t.time "time"
     t.string "symptoms", array: true
+    t.string "complaints"
     t.index ["patient_id"], name: "index_appointments_on_patient_id"
     t.index ["physician_id"], name: "index_appointments_on_physician_id"
   end
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 2020_01_03_221317) do
     t.integer "height"
     t.string "blood_type"
     t.integer "age"
+    t.string "photo"
     t.index ["email"], name: "index_patients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_patients_on_reset_password_token", unique: true
   end
@@ -131,6 +133,9 @@ ActiveRecord::Schema.define(version: 2020_01_03_221317) do
     t.string "specification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.string "phone"
+    t.string "photo"
   end
 
   add_foreign_key "appointments", "patients"
