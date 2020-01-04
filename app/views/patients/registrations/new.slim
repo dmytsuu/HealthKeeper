@@ -26,6 +26,9 @@
             = form.input :weight, as: :string, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col pl-0' }, placeholder: '62'
             = form.input :height, as: :string, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col pr-0' }, placeholder: '158'
           .row
+            = form.input :age, as: :string, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col pl-0' }, placeholder: '14'
+            = form.input :sex, as: :select, collection: %w[male female], input_html: { class: 'form-control', style: 'height: 46px;' }, wrapper_html: { class: 'col pr-0' }, label_method: :capitalize, include_blank: false
+          .row
             = form.input :age, as: :integer, required: true, input_html: { class: 'form-control', style: 'height: 46px;' }, wrapper_html: { class: 'col pl-0' }, placeholder: '14'
             = form.input :blood_type, required: true, input_html: { class: 'form-control' }, wrapper_html: { class: 'col pr-0' }, placeholder: 'A+'
     .row
