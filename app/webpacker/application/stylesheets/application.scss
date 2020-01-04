@@ -6,4 +6,15 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import "form";
 @import "sessions/new";
 @import "pages";
-@import "datepicker";
+
+.appointment-card { height: 350px; }
+input[type=radio]:checked + label .nav-item {
+  background: #ececec !important;
+  color: rgba(0, 0, 0, 0.7);
+  @extend .rounded;
+}
+
+.select2-container--default .select2-selection--multiple {
+  border: 1px solid #ced4da;
+  height: 46px;
+}
