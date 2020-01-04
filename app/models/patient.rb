@@ -12,4 +12,6 @@ class Patient < ApplicationRecord
   has_many :physicians, through: :appointments
 
   accepts_nested_attributes_for :parent
+
+  validates :name, :surname, :email, :age, :blood_type, presence: true
 end
