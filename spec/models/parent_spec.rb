@@ -1,5 +1,5 @@
-require 'rails_helper'
+# frozen_string_literal: true
 
-RSpec.describe Parent, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Parent do
+  it { should belong_to(:patient) }
 end
